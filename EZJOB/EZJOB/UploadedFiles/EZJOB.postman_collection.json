@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "294aa79c-5f06-4290-a714-7f44fc863945",
+		"name": "EZJOB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37118586"
+	},
+	"item": [
+		{
+			"name": "Token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "RupeshG",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "Tracet@123",
+						"type": "text"
+					},
+					{
+						"key": "companyid",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "branchid",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://103.127.21.137:8031/token",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ForgetPassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://103.127.21.137:8031/Api/Users/ForgetPassword?companyid=1&branchid=1&username=RupeshG",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"Api",
+						"Users",
+						"ForgetPassword"
+					],
+					"query": [
+						{
+							"key": "companyid",
+							"value": "1"
+						},
+						{
+							"key": "branchid",
+							"value": "1"
+						},
+						{
+							"key": "username",
+							"value": "RupeshG"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllJobDetails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pee76ryM5_X6FAzmLf6ACyABa-UBkUhkIv9tqRwDgT7OQyGsKx5FmA2SQdBgyuHTtY_FCON6QKXXqvpFgwBToDx9oawneJeiyKyUDfPqhlm0wXP-ATXkT4DzZekdSyWj8ApJT1-bDRhIG83AYpPwnuiLwOPizaUjbZ9m0ljSXqQGWBxujbHJExdtPFjeGU7XDP_qbN2f_jLzS2YIlrb5fQ6dD162farJwymhs8H1seMU7J3N-9BwF--5m8gT_NeZ-ElD1pSWfO-l3wZp4fDJ6S8VoFjq_hzHzM1olr0gUibgPf2XODw_q8qFhhadWYK36fs73aOzgjMAXXFtOq_sFFI0z1TO7VctzRz9gQtpOo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://103.127.21.137:8031/Api/Job/GetAllJobDetails",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"Api",
+						"Job",
+						"GetAllJobDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllOpenJobDetails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pee76ryM5_X6FAzmLf6ACyABa-UBkUhkIv9tqRwDgT7OQyGsKx5FmA2SQdBgyuHTtY_FCON6QKXXqvpFgwBToDx9oawneJeiyKyUDfPqhlm0wXP-ATXkT4DzZekdSyWj8ApJT1-bDRhIG83AYpPwnuiLwOPizaUjbZ9m0ljSXqQGWBxujbHJExdtPFjeGU7XDP_qbN2f_jLzS2YIlrb5fQ6dD162farJwymhs8H1seMU7J3N-9BwF--5m8gT_NeZ-ElD1pSWfO-l3wZp4fDJ6S8VoFjq_hzHzM1olr0gUibgPf2XODw_q8qFhhadWYK36fs73aOzgjMAXXFtOq_sFFI0z1TO7VctzRz9gQtpOo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://103.127.21.137:8031/Api/Job/GetAllJobDetails?status=Open&Priority=All",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"Api",
+						"Job",
+						"GetAllJobDetails"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Open"
+						},
+						{
+							"key": "Priority",
+							"value": "All"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllOpenJobDetailsWithPriority",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pee76ryM5_X6FAzmLf6ACyABa-UBkUhkIv9tqRwDgT7OQyGsKx5FmA2SQdBgyuHTtY_FCON6QKXXqvpFgwBToDx9oawneJeiyKyUDfPqhlm0wXP-ATXkT4DzZekdSyWj8ApJT1-bDRhIG83AYpPwnuiLwOPizaUjbZ9m0ljSXqQGWBxujbHJExdtPFjeGU7XDP_qbN2f_jLzS2YIlrb5fQ6dD162farJwymhs8H1seMU7J3N-9BwF--5m8gT_NeZ-ElD1pSWfO-l3wZp4fDJ6S8VoFjq_hzHzM1olr0gUibgPf2XODw_q8qFhhadWYK36fs73aOzgjMAXXFtOq_sFFI0z1TO7VctzRz9gQtpOo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://103.127.21.137:8031/Api/Job/GetAllJobDetails?status=Open&Priority=Medium",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"Api",
+						"Job",
+						"GetAllJobDetails"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Open"
+						},
+						{
+							"key": "Priority",
+							"value": "Medium"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllHoldJobDetails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pee76ryM5_X6FAzmLf6ACyABa-UBkUhkIv9tqRwDgT7OQyGsKx5FmA2SQdBgyuHTtY_FCON6QKXXqvpFgwBToDx9oawneJeiyKyUDfPqhlm0wXP-ATXkT4DzZekdSyWj8ApJT1-bDRhIG83AYpPwnuiLwOPizaUjbZ9m0ljSXqQGWBxujbHJExdtPFjeGU7XDP_qbN2f_jLzS2YIlrb5fQ6dD162farJwymhs8H1seMU7J3N-9BwF--5m8gT_NeZ-ElD1pSWfO-l3wZp4fDJ6S8VoFjq_hzHzM1olr0gUibgPf2XODw_q8qFhhadWYK36fs73aOzgjMAXXFtOq_sFFI0z1TO7VctzRz9gQtpOo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://103.127.21.137:8031/Api/Job/GetAllJobDetails?status=Hold&Priority=All",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"Api",
+						"Job",
+						"GetAllJobDetails"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Hold"
+						},
+						{
+							"key": "Priority",
+							"value": "All"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllHoldJobDetailsWithPriorty",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pee76ryM5_X6FAzmLf6ACyABa-UBkUhkIv9tqRwDgT7OQyGsKx5FmA2SQdBgyuHTtY_FCON6QKXXqvpFgwBToDx9oawneJeiyKyUDfPqhlm0wXP-ATXkT4DzZekdSyWj8ApJT1-bDRhIG83AYpPwnuiLwOPizaUjbZ9m0ljSXqQGWBxujbHJExdtPFjeGU7XDP_qbN2f_jLzS2YIlrb5fQ6dD162farJwymhs8H1seMU7J3N-9BwF--5m8gT_NeZ-ElD1pSWfO-l3wZp4fDJ6S8VoFjq_hzHzM1olr0gUibgPf2XODw_q8qFhhadWYK36fs73aOzgjMAXXFtOq_sFFI0z1TO7VctzRz9gQtpOo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://103.127.21.137:8031/Api/Job/GetAllJobDetails?status=Hold&Priority=Medium",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"Api",
+						"Job",
+						"GetAllJobDetails"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Hold"
+						},
+						{
+							"key": "Priority",
+							"value": "Medium"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllClosedJobDetails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pee76ryM5_X6FAzmLf6ACyABa-UBkUhkIv9tqRwDgT7OQyGsKx5FmA2SQdBgyuHTtY_FCON6QKXXqvpFgwBToDx9oawneJeiyKyUDfPqhlm0wXP-ATXkT4DzZekdSyWj8ApJT1-bDRhIG83AYpPwnuiLwOPizaUjbZ9m0ljSXqQGWBxujbHJExdtPFjeGU7XDP_qbN2f_jLzS2YIlrb5fQ6dD162farJwymhs8H1seMU7J3N-9BwF--5m8gT_NeZ-ElD1pSWfO-l3wZp4fDJ6S8VoFjq_hzHzM1olr0gUibgPf2XODw_q8qFhhadWYK36fs73aOzgjMAXXFtOq_sFFI0z1TO7VctzRz9gQtpOo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://103.127.21.137:8031/Api/Job/GetAllJobDetails?status=Closed&Priority=All",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"Api",
+						"Job",
+						"GetAllJobDetails"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Closed"
+						},
+						{
+							"key": "Priority",
+							"value": "All"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllClosedJobDetailsWithPriority",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "pee76ryM5_X6FAzmLf6ACyABa-UBkUhkIv9tqRwDgT7OQyGsKx5FmA2SQdBgyuHTtY_FCON6QKXXqvpFgwBToDx9oawneJeiyKyUDfPqhlm0wXP-ATXkT4DzZekdSyWj8ApJT1-bDRhIG83AYpPwnuiLwOPizaUjbZ9m0ljSXqQGWBxujbHJExdtPFjeGU7XDP_qbN2f_jLzS2YIlrb5fQ6dD162farJwymhs8H1seMU7J3N-9BwF--5m8gT_NeZ-ElD1pSWfO-l3wZp4fDJ6S8VoFjq_hzHzM1olr0gUibgPf2XODw_q8qFhhadWYK36fs73aOzgjMAXXFtOq_sFFI0z1TO7VctzRz9gQtpOo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://103.127.21.137:8031/Api/Job/GetAllJobDetails?status=Closed&Priority=High",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"Api",
+						"Job",
+						"GetAllJobDetails"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "Closed"
+						},
+						{
+							"key": "Priority",
+							"value": "High"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDashbordCount",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "HEHfAkMgujoSqV_i4mwHKWmybHAW0wXD9ZSU3Dcln-48q8BUQL17JQ35P1z3i4us0dcSy_R74Ejff2UH6K_xGtoZQiq1oRHfWOyS64fnnIqdrtAjgmzBcBcy6MoPqDg6Dbeq4qXxK-ztHmtjPSjefbZW9-nnAOFv3cgL7Li-G3NvQ_shS4ObOpzBFqB6LnCKIVbkCZ7EZufOPpeEJQ_Bbrq-6J5n-90bmLbyh223x8zosHWXo7DeJaD5_cgX8gUsh3VaXOrWC9YcQtzMDuQUI4EeJE5h8N9T3jJq-in8AHJx7pCShQF7O65kkclNPr0gvBVyIS7WJA5CtSR7mvKVPzSi73CKaBnc9WeQsOiq-ks",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://103.127.21.137:8031/api/Job/GetDashbordCount",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8031",
+					"path": [
+						"api",
+						"Job",
+						"GetDashbordCount"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

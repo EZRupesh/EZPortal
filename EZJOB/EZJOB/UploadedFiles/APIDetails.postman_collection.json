@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "cb22aa92-d689-4753-8c5d-a6018f2a6be9",
+		"name": "APIDetails",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30640391"
+	},
+	"item": [
+		{
+			"name": "http://103.127.21.137:8012/token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://103.127.21.137:8012/token",
+					"protocol": "http",
+					"host": [
+						"103",
+						"127",
+						"21",
+						"137"
+					],
+					"port": "8012",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

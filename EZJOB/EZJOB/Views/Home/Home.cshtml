@@ -1,0 +1,243 @@
+﻿@model EZJOB.Models.JobDetails
+@{
+    Layout = null;
+}
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="~/CSS/salert.css" rel="stylesheet" />
+<script src="~/JS/sweetalert.js"></script>
+<style>
+    .navbar-nav .nav-link {
+        color: black !important;
+        font-weight: 500;
+    }
+
+    .navbar {
+        background-color: aliceblue;
+    }
+
+    body {
+        margin-top: 0px !important;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <nav class="navbar navbar-expand-sm  navbar-dark">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="#">
+            <img src="https://ezwaretechnologies.com///wp-content/uploads/2014/07/ezware_header_logo.png" alt="logo" style="width:150px;">
+        </a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+
+                    @HttpContext.Current.Session["Empname"].ToString()
+                </a>
+                <div class="dropdown-menu" style="min-width: 0px !important; padding: 0px !important;margin:0px!important">
+                    <a class="dropdown-item" href="@Url.Action("Login", "Login")">Logout</a>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+    <div class="container ">
+
+        <div class="row align-items-end mb-4 pb-2" style="display:none">
+            <div class="col-md-8">
+                <div class="section-title text-center text-md-start">
+                    <h4 class="title mb-4">Find the perfect jobs</h4>
+                    <p class="text-muted mb-0 para-desc">Start work with Leaping. Build responsive, mobile-first projects on the web with the world's most popular front-end component library.</p>
+                </div>
+            </div><!--end col-->
+
+            <div class="col-md-4 mt-4 mt-sm-0 d-none d-md-block">
+                <div class="text-center text-md-end">
+                    <a href="#" class="text-primary">View more Jobs <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right fea icon-sm"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+
+
+        <div class="row">
+
+            
+            <div class="col-3">
+                <span class="text-muted d-block" style="color:#fff!important"> <a href="@Url.Action("Dashboard", "Dashboard")" class="text-muted" style="color:#fff!important"><i class="fa fa-arrow-left" aria-hidden="true" style="color:#fff!important"></i></a></span><br />
+            </div>
+            <div class="col-3" style="display:none">
+                <a onclick="JobDetail('High')" class="btn btn-primary" style="background-color: #e8c3b9 !important; color: black !important;font-size:small!important;">High</a>
+            </div>
+            <div class="col-3" style="display:none">
+                <a onclick="JobDetail('Medium')" class="btn btn-primary" style="background-color: #b91d47 !important; color: black !important; font-size: small !important;">Medium</a>
+            </div>
+            <div class="col-3" style="display:none">
+                <a onclick="JobDetail('Low')" class="btn btn-primary" style="background-color: #fff !important; color: black !important; font-size: small !important;">Low</a>
+            </div>
+            @foreach (var item in Model.list)
+            {
+
+                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+                    <div class="card border-0 bg-light rounded shadow">
+                        <div class="card-body p-4">
+
+                            @if (item.Status == "Open")
+                            {
+                                <span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0" style="color:#fff!important">@item.Status</span>
+                            }
+                            else if (item.Status == "Closed")
+                            {
+                                <span class="badge rounded-pill float-md-end mb-3 mb-sm-0" style="background-color: #b91d47; color: #fff !important">@item.Status</span>
+                            }
+                            else if (item.Status == "Paused")
+                            {
+                                <span class="badge rounded-pill float-md-end mb-3 mb-sm-0" style="background-color: #e8c3b9;color:#fff !important">@item.Status</span>
+                            }
+                            else
+                            { <span class="badge rounded-pill float-md-end mb-3 mb-sm-0" style="background-color: #2b5797; color: #fff !important">@item.Status</span>
+
+                        }
+                            <h5>@item.JobId : @item.Title</h5>
+                            <div class="mt-3">
+                                <span class="text-muted d-block"><i class="fa fa-user-circle" aria-hidden="true"></i> @item.CustomerName</span>
+                                <span class="text-muted d-block"><i class="fa fa-home" aria-hidden="true"></i> <a href="#" class="text-muted">@item.CustomerAddress</a></span>
+                                <span class="text-muted d-block"><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:@item.CustomerPinCode">@item.CustomerPinCode</a> </span>
+                            </div>
+
+                            <div class="mt-3">
+                                <a href="@Url.Action("JobDetail", "JobDetail",new { id=item.Id.ToString()},null)" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            }
+
+
+
+            <div class="col-12 mt-4 pt-2 d-block d-md-none text-center">
+
+            </div><!--end col-->
+        </div><!--end row-->
+    </div>
+
+    <style>
+        body {
+            margin-top: 20px;
+          /*  background-repeat: no-repeat;*/
+            background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+        }
+
+        .shadow {
+            box-shadow: 0 0 3px rgb(53 64 78 / 20%) !important;
+        }
+
+        .rounded {
+            border-radius: 5px !important;
+        }
+
+        .bg-light {
+            background-color: #f7f8fa !important;
+        }
+
+        .bg-primary, .btn-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active, .badge-primary, .nav-pills .nav-link.active, .pagination .active a, .custom-control-input:checked ~ .custom-control-label:before, #preloader #status .spinner > div, .social-icon li a:hover, .back-to-top:hover, .back-to-home a, ::selection, #topnav .navbar-toggle.open span:hover, .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots.clickable .owl-dot:hover span, .watch-video a .play-icon-circle, .sidebar .widget .tagcloud > a:hover, .flatpickr-day.selected, .flatpickr-day.selected:hover, .tns-nav button.tns-nav-active, .form-check-input.form-check-input:checked {
+            background-color: #00aba9 !important;
+        }
+
+        .badge {
+            padding: 5px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+        }
+
+        .btn-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active {
+            box-shadow: 0 3px 7px rgb(109 199 122 / 50%) !important;
+        }
+
+        .btn-primary, .btn-outline-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active, .bg-soft-primary .border, .alert-primary, .alert-outline-primary, .badge-outline-primary, .nav-pills .nav-link.active, .pagination .active a, .form-group .form-control:focus, .form-group .form-control.active, .custom-control-input:checked ~ .custom-control-label:before, .custom-control-input:focus ~ .custom-control-label::before, .form-control:focus, .social-icon li a:hover, #topnav .has-submenu.active.active .menu-arrow, #topnav.scroll .navigation-menu > li:hover > .menu-arrow, #topnav.scroll .navigation-menu > li.active > .menu-arrow, #topnav .navigation-menu > li:hover > .menu-arrow, .flatpickr-day.selected, .flatpickr-day.selected:hover, .form-check-input:focus, .form-check-input.form-check-input:checked, .container-filter li.active, .container-filter li:hover {
+            border-color: #00aba9 !important;
+        }
+
+            .bg-primary, .btn-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active, .badge-primary, .nav-pills .nav-link.active, .pagination .active a, .custom-control-input:checked ~ .custom-control-label:before, #preloader #status .spinner > div, .social-icon li a:hover, .back-to-top:hover, .back-to-home a, ::selection, #topnav .navbar-toggle.open span:hover, .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots.clickable .owl-dot:hover span, .watch-video a .play-icon-circle, .sidebar .widget .tagcloud > a:hover, .flatpickr-day.selected, .flatpickr-day.selected:hover, .tns-nav button.tns-nav-active, .form-check-input.form-check-input:checked {
+                background-color: #00aba9 !important;
+            }
+
+        .btn {
+            padding: 8px 20px;
+            outline: none;
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            font-weight: 600;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #00aba9 !important;
+            border: 1px solid #00aba9 !important;
+            color: #fff !important;
+            box-shadow: 0 3px 7px rgb(109 199 122 / 50%);
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <script>
+
+        function JobDetail(jobId) {
+            var url = '@Url.Action("Home1", "Home")' + '?status=' + jobId;
+        window.location.href = url;
+
+
+        }
+        function OpenJobDetail(jobId) {
+
+            var HoldRemark = document.getElementById('HoldRemark').value;
+            if (HoldRemark == "") {
+                 Swal.fire({
+                    title: "Job Alert!",
+                     text: "Hold Remark Mandatory...!",
+                     icon: "info"
+                });
+            }
+            else {
+
+                var url = '@Url.Action("HoldJobDetail", "JobDetail")' + '?id=' + jobId + '&HoldRemark=' + encodeURIComponent(HoldRemark);
+        window.location.href = url;
+            }
+
+        }
+        function CloseJobDetail(jobId) {
+
+            var HoldRemark = document.getElementById('HoldRemark').value;
+            if (HoldRemark == "") {
+                 Swal.fire({
+                    title: "Job Alert!",
+                     text: "Hold Remark Mandatory...!",
+                     icon: "info"
+                });
+            }
+            else {
+
+                var url = '@Url.Action("HoldJobDetail", "JobDetail")' + '?id=' + jobId + '&HoldRemark=' + encodeURIComponent(HoldRemark);
+        window.location.href = url;
+            }
+
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+}
